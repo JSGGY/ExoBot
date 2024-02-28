@@ -7,8 +7,9 @@ public class HormigaDTO {
     private String nombre;
     private String Estado;
     private String FechaCrea;
-    
-    public HormigaDTO(){}
+
+    public HormigaDTO() {
+    }
 
     public HormigaDTO(Integer idHormiga, Integer idHormigaTipo, String codigo, String nombre, String estado,
             String fechaCrea) {
@@ -20,77 +21,71 @@ public class HormigaDTO {
         FechaCrea = fechaCrea;
     }
 
+    public HormigaDTO(Integer idHormigaRol) {
+        idHormigaTipo = idHormigaRol;
+    }
 
     public Integer getIdHormiga() {
         return idHormiga;
     }
 
-
     public void setIdHormiga(Integer idHormiga) {
         this.idHormiga = idHormiga;
     }
-
 
     public Integer getIdHormigaTipo() {
         return idHormigaTipo;
     }
 
-
     public void setIdHormigaTipo(Integer idHormigaTipo) {
         this.idHormigaTipo = idHormigaTipo;
     }
-
 
     public String getCodigo() {
         return Codigo;
     }
 
-
     public void setCodigo(String codigo) {
         Codigo = codigo;
     }
-
 
     public String getNombre() {
         return nombre;
     }
 
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
 
     public String getEstado() {
         return Estado;
     }
 
-
     public void setEstado(String estado) {
         Estado = estado;
     }
-
 
     public String getFechaCrea() {
         return FechaCrea;
     }
 
-
     public void setFechaCrea(String fechaCrea) {
         FechaCrea = fechaCrea;
     }
 
-
     @Override
-    public String toString(){
+    public String toString() {
         return getClass().getName()
-        + "\n IdHormiga:       "+ getIdHormiga()       
-        + "\n IdHormigaTipo:   "+ getIdHormigaTipo()   
-        + "\n IdCodigo:        "+ getCodigo()
-        + "\n Nombre:          "+ getNombre()  
-        + "\n Estado:          "+ getEstado()       
-        + "\n FechaCrea:       "+ getFechaCrea();   
-        
+                + "\n IdHormiga:       " + getIdHormiga()
+                + "\n IdHormigaTipo:   " + getIdHormigaTipo()
+                + "\n IdCodigo:        " + getCodigo()
+                + "\n Nombre:          " + getNombre()
+                + "\n Estado:          " + getEstado()
+                + "\n FechaCrea:       " + getFechaCrea();
+
     }
-    
+
+    public String toStringIdHormigaRol() {
+        return "" + idHormigaTipo;
+    }
 }
