@@ -12,7 +12,7 @@ import java.util.List;
 
 import DataAccess.SQLiteDataHelper;
 import DataAccess.DTO.HormigaDTO;
-
+import DataAccess.DTO.HormigaDTO;
 
 public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
 
@@ -40,39 +40,64 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 HormigaDTO s = new HormigaDTO(rs.getInt(1),
-                                              rs.getInt(2),
-                                              rs.getString(3),
-                                              rs.getString(4), 
-                                              rs.getString(5),
-                                              rs.getString(6));
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6));
                 list.add(s);
             }
         } catch (SQLException e) {
             throw e;
         }
-        return list;      
+        return list;
     }
 
     @Override
     public HormigaDTO readBy(Integer id) throws Exception {
         HormigaDTO oS = new HormigaDTO();
-        String query = "SELECT IdHormiga,IdHormigaTipo,Codigo,Nombre,Estado,FechaCrea FROM Hormiga WHERE Estado = 'A'AND IdHormiga = "+ id.toString();
+        String query = "SELECT IdHormiga,IdHormigaTipo,Codigo,Nombre,Estado,FechaCrea FROM Hormiga WHERE Estado = 'A'AND IdSector = "
+                + id.toString();
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 oS = new HormigaDTO(rs.getInt(1),
-                                    rs.getInt(2),
-                                    rs.getString(3),
-                                    rs.getString(4), 
-                                    rs.getString(5),
-                                    rs.getString(6));
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6));
             }
         } catch (SQLException e) {
             throw e;
         }
         return oS;
+    }
+
+    public HormigaDTO obtenerHormigaRol(Integer idPersona) throws Exception {
+        HormigaDTO hormigaDTO = new HormigaDTO();
+
+        String query = " SELECT IdHormigaTipo FROM Hormiga WHERE Estado = 'A' AND IdHormiga =   "
+                + idPersona.toString();
+
+        try {
+            Connection conn = openConnection(); // Conectar a la base de datos
+            Statement stmt = conn.createStatement(); // Crear una declaración SQL
+            ResultSet rs = stmt.executeQuery(query); // Ejecutar la consulta SQL
+            while (rs.next()) {
+                // Obtener el identificador de persona de la fila actual
+                hormigaDTO = new HormigaDTO(rs.getInt(1)); // Crear un nuevo objeto
+                // HormigaDTO con el
+                // identificador de persona
+                // Agregar el objeto a la lista
+                return hormigaDTO;
+            }
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        }
+        return hormigaDTO;
     }
 
     @Override
@@ -84,7 +109,7 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, entity.getNombre());
-            stmt.setString(2,date.format(now).toString());
+            stmt.setString(2, date.format(now).toString());
             stmt.setInt(3, entity.getIdHormiga());
             stmt.executeUpdate();
             return true;
@@ -100,13 +125,12 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, "X");
-            stmt.setInt(2,id);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             throw e;
-        } 
+        }
     }
-    
-    
+
 }

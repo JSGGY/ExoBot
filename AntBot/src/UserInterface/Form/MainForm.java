@@ -1,52 +1,75 @@
 package UserInterface.Form;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
+import java.awt.Dimension;
 
-import javax.swing.JFrame;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import UserInterface.IAStyle;
+import UserInterface.CustomerControl.SebButton;
 
-public class MainForm extends JFrame{
-    MenuPanel  pnlMenu = new MenuPanel();
-    JPanel     pnlMain = new MainPanel();
- 
-    public MainForm(String tilteApp) {
-        customizeComponent(tilteApp);
-        pnlMenu.btnHome.addActionListener(      e -> setPanel(new MainPanel())); 
-        pnlMenu.btnLogin.addActionListener(     e -> setPanel(new LoginPanel())); 
-        pnlMenu.btnSexo.addActionListener(      e -> setPanel(new SexoPanel()));  
-        pnlMenu.btnLocalidad.addActionListener( e -> setPanel(new MainPanel())); 
-        //agregar
-        pnlMenu.btnTest.addActionListener( e -> { IAStyle.showMsgError("mensaje de error");}); 
+public class MainForm extends JPanel {
+    SebButton btnIniciarSesion = new SebButton("Iniciar Sesión"),
+            btnCrearCuenta = new SebButton("Crear Cuenta");
+    private JLabel background; // Etiqueta para la imagen de fondo
+
+    public MainForm() {
+
+        cusromizarPanel();
+        btnIniciarSesion.addActionListener(e -> rolPanelIniciar());
+
+        btnCrearCuenta.addActionListener(e -> btnCrearCuentaClick());
     }
 
-    private void setPanel(JPanel formularioPanel) {
-        Container container = getContentPane();
-        container.remove(pnlMain);
-        pnlMain = formularioPanel;
-        container.add(pnlMain, BorderLayout.CENTER);
-        revalidate();
-        repaint();
+    private void rolPanelIniciar() {
+        try {
+            removeAll();
+            add(new RolPanel());
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar PatPnlPersonaSexo",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }
-     
-    //JOptionPane.showMessageDialog(this, "Seleccionaste Opción 3");
 
-    private void customizeComponent(String tilteApp) {
-        setTitle(tilteApp);
-        setSize(930, 800);
-        setResizable(false);
-        setLocationRelativeTo(null); // Centrar en la pantalla
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    private void btnCrearCuentaClick() {
+        JOptionPane.showMessageDialog(this, "Por el momento no puedes Crear una cuenta");
 
-        // Crear un contenedor para los dos paneles usando BorderLayout
-        Container container = getContentPane();
-        container.setLayout(new BorderLayout());
+    }
 
-        // Agregar los paneles al contenedor
-        container.add(pnlMenu, BorderLayout.WEST);
-        container.add(pnlMain, BorderLayout.CENTER);
-        setVisible(true);
-    }   
+    private void cusromizarPanel() {
+        setLayout(new BorderLayout()); // Establece el diseño del MainForm como BorderLayout
+
+        // Carga la imagen de fondo
+        ImageIcon backgroundImage = new ImageIcon(
+                "AntBot\\Resource\\FondoMainPanel.png"); // Cambia la
+        // ruta por
+        // la
+        // ubicación
+        // de tu imagen
+        background = new JLabel(backgroundImage);
+
+        // Establece el tamaño del fondo para que coincida con el tamaño del MainForm
+        background.setPreferredSize(new Dimension(getWidth(), getHeight()));
+
+        // Establece el diseño del fondo como BorderLayout para que cubra todo el
+        // MainForm
+        background.setLayout(new BorderLayout());
+
+        // Agrega los botones al fondo
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setOpaque(false); // Hace que el panel de botones sea transparente
+        buttonsPanel.add(btnIniciarSesion);
+        buttonsPanel.add(btnCrearCuenta);
+
+        // Agrega el panel de botones al centro del fondo
+        background.add(buttonsPanel, BorderLayout.CENTER);
+
+        // Agrega el fondo al MainForm
+        add(background);
+    }
 }
