@@ -42,3 +42,8 @@ INSERT INTO Hormiga
 ( 3,  "33333", "jeremy");
 
 SELECT * FROM Persona;
+
+INSERT INTO UsuarioSistema(IdHormigaTipo,Contraseña,FechaModifica)VALUES
+(1,'contrasena',CURRENT_TIMESTAMP),
+(2,'ingles',CURRENT_TIMESTAMP),
+(4,'espanol',CURRENT_TIMESTAMP);

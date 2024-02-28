@@ -62,6 +62,24 @@ CREATE TABLE Persona (
     ,Estado         VARCHAR(1) NOT NULL DEFAULT('A')
     ,FechaCrea      datetime default current_timestamp
 );
+CREATE TABLE Persona (
+     IdPersona      INTEGER primary key autoincrement
+    ,IdPersonaTipo  INTEGER NOT NULL REFERENCES PersonaTipo(IdPersonaTipo)
+    ,Cedula         TEXT NOT NULL UNIQUE
+    ,Nombre         TEXT NOT NULL 
+    ,Estado         VARCHAR(1) NOT NULL DEFAULT('A')
+    ,FechaCrea      datetime default current_timestamp
+);
+
+CREATE TABLE UsuarioSistema (
+    IdUsuarioSistema        INTEGER primary key autoincrement
+    ,IdHormigaTipo          INTEGER NOT NULL REFERENCES HormigaTipo(IdHormigaTipo)
+    ,Contraseña             TEXT NOT NULL UNIQUE
+    ,Estado                 VARCHAR(1) NOT NULL DEFAULT('A')
+    ,FechaCrea              datetime default current_timestamp
+    ,FechaModifica          DATE
+);
+
 
 CREATE TRIGGER limite_filas
 BEFORE INSERT ON HormigaTipo
