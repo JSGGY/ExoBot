@@ -55,7 +55,7 @@ public class AntBotDAO extends SQLiteDataHelper implements IDAO<AntBotDTO> {
     @Override
     public AntBotDTO readBy(Integer id) throws Exception {
         AntBotDTO oS = new AntBotDTO();
-        String query = "SELECT IdAntBot,IdIABot,Nombre,Serie,Estado FROM AntBot WHERE Estado = 'A'AND IdSector = "+ id.toString();
+        String query = "SELECT IdAntBot,IdIABot,Nombre,Serie,Estado FROM AntBot WHERE Estado = 'A'AND IdAntBot = "+ id.toString();
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();

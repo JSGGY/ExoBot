@@ -56,7 +56,7 @@ public class PersonaDAO extends SQLiteDataHelper implements IDAO<PersonaDTO> {
     @Override
     public PersonaDTO readBy(Integer id) throws Exception {
         PersonaDTO oS = new PersonaDTO();
-        String query = "SELECT IdPersona,IdPersonaTipo,Cedula,Nombre,Estado,FechaCrea FROM Persona WHERE Estado = 'A'AND IdSector = "+ id.toString();
+        String query = "SELECT IdPersona,IdPersonaTipo,Cedula,Nombre,Estado,FechaCrea FROM Persona WHERE Estado = 'A'AND IdSPersona = "+ id.toString();
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();

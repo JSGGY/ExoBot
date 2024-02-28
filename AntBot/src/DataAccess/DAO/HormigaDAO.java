@@ -56,7 +56,7 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
     @Override
     public HormigaDTO readBy(Integer id) throws Exception {
         HormigaDTO oS = new HormigaDTO();
-        String query = "SELECT IdHormiga,IdHormigaTipo,Codigo,Nombre,Estado,FechaCrea FROM Hormiga WHERE Estado = 'A'AND IdSector = "+ id.toString();
+        String query = "SELECT IdHormiga,IdHormigaTipo,Codigo,Nombre,Estado,FechaCrea FROM Hormiga WHERE Estado = 'A'AND IdHormiga = "+ id.toString();
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();

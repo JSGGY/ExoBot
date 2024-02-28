@@ -62,8 +62,7 @@ public class PersonaTipoDTO {
     public String toString(){
         return getClass().getName()
         + "\n IdPersonaTipo:   "+ getIdPersonaTipo()  
-        + "\n Nombre:          "+ getNombre()  
-        + "\n Estado:          "+ getEstado()       
+        + "\n Nombre:          "+ getNombre()        
         + "\n FechaCrea:       "+ getFechaCrea();   
         
     }
