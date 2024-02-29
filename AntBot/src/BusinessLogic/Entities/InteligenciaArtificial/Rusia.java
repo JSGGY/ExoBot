@@ -71,9 +71,9 @@ public class Rusia {
                     String ssdecisionVolar = sc.nextLine();
                     if (ssdecisionVolar.toLowerCase().equals("si")) {
     
-                        alas.ssVolar();
+                        alas.volar();
                         System.out.println("Reemplazando batería de la fuente de poder ");
-                        hormigaRusa.ssReemplazarBateriaFuente(fuentePoder);
+                        hormigaRusa.reemplazarBateriaFuente(fuentePoder);
                         System.out.println("Baterias al 100");
                     }
                 }

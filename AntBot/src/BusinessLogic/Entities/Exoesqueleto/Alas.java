@@ -7,15 +7,15 @@ public class Alas {
         nivelDeEnergia = 100;
     }
 
-    public int getssNivelDeEnergia() {
+    public int getNivelDeEnergia() {
         return nivelDeEnergia;
     }
 
-    public void setssNivelDeEnergia(int nivelEnergia) {
+    public void setNivelDeEnergia(int nivelEnergia) {
         nivelDeEnergia = nivelEnergia;
     }
 
-    public void ssVolar() {
+    public void volar() {
         for (int porcentajeBateria = 100; porcentajeBateria >= 0; porcentajeBateria--) {
             System.out.print("\rExobot Volando...batería al " + porcentajeBateria + "%");
             try {

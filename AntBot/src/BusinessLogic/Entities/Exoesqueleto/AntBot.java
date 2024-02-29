@@ -4,7 +4,7 @@ import EjercitoRuso.IhomigaExtremidad;
 import EjercitoRuso.HormigaRusa;
 import InteligenciaArtificial.IABOT;
 
-public class AntBot extends IABOT implements IhomigaExtremidad, ITecnicoRuso,ITecnicoIngles{
+public class AntBot extends IABOT implements IhomigaExtremidad{
     
     private FuentePoder fuentePoder;
     private Tenazas tenazas;
@@ -16,7 +16,6 @@ public class AntBot extends IABOT implements IhomigaExtremidad, ITecnicoRuso,ITe
     private Procesador procesador;
     private Tronco tronco;
     private Alas alas;
-    private Patas patas;
     private Transductores transductores;
     public AntBot(IABOT iaBot) {
         super(iaBot);
@@ -35,19 +34,22 @@ public class AntBot extends IABOT implements IhomigaExtremidad, ITecnicoRuso,ITe
     public void unirseHormigaRusa(HormigaRusa hRusa) throws InterruptedException {
         if (hRusa.getClasificacion().equals("Zangano")) {
             alas = new Alas();
-            alas.ssVolar();
+            alas.volar();
         }
         System.out.println("Hormiga Rusa: " + hRusa.getClasificacion() + " ha ingresado correctamente al AntBot");
     }
 
     public void controlarAcciones(){
+        transductores.correr();
+        transductores.saltar();
         antenas.detectarSonido();
         antenas.cumplirInstrucciones();
         radio.detectarEnemigos();
         radio.cumplirInstrucciones();
         tenazas.mover();
         tenazas.cumplirInstrucciones();
-        
+        circuitoCarga.cargarse();
+        circuitoAnillado.electrocutar();
     }
 
     @Override
