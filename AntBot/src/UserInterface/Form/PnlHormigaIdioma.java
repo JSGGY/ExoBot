@@ -52,7 +52,7 @@ public class PnlHormigaIdioma extends JPanel {
             Object[][] data = new Object[Hormigas.size()][encabezado.length];
 
             // Llenar el array con los datos obtenidos de la base de datos
-            for (int i = 0; i < Hormigas.size(); i++) {
+            for (int i = 0; i < Antbot.size(); i++) {
                 HormigaDTO Hormiga = Hormigas.get(i);
                 AntBotDTO AntBot = Antbot.get(i);
                 data[i][0] = Hormiga.getIdHormigaTipo();
@@ -78,6 +78,7 @@ public class PnlHormigaIdioma extends JPanel {
             scrollPane.setPreferredSize(new Dimension(600, 300)); // Establecer tamaño preferido
             pnlTabla.removeAll();
             pnlTabla.add(scrollPane);
+            pnlTabla.revalidate();
             // Asegúrate de agregar el panel que contiene la tabla al panel principal
             add(pnlTabla, BorderLayout.CENTER);
         } catch (Exception e) {
@@ -97,11 +98,12 @@ public class PnlHormigaIdioma extends JPanel {
         add(panelTablaCentral, BorderLayout.CENTER);
 
         // Panel para el botón "Regresar"
-        JPanel panelRegresar = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelRegresar.setOpaque(false);
-        panelRegresar.add(btnRegresar);
+        JPanel panelSouth = new JPanel(new FlowLayout(FlowLayout.LEFT)); // Nuevo panel para el botón "Regresar"
 
-        add(panelRegresar, BorderLayout.SOUTH);
+        panelSouth.setOpaque(false);
+        panelSouth.add(btnRegresar);
+        add(panelSouth, BorderLayout.SOUTH); // Agregar el panel de "Regresar" en la parte inferior
+
     }
 
     private void setupActions() {

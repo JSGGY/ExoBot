@@ -34,7 +34,6 @@ public class AntBot extends IABOT implements IhomigaExtremidad{
     public void unirseHormigaRusa(HormigaRusa hRusa) throws InterruptedException {
         if (hRusa.getClasificacion().equals("Zangano")) {
             alas = new Alas();
-            alas.volar();
         }
         System.out.println("Hormiga Rusa: " + hRusa.getClasificacion() + " ha ingresado correctamente al AntBot");
     }
