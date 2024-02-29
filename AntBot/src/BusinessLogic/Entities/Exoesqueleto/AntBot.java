@@ -1,43 +1,32 @@
 package BusinessLogic.Entities.Exoesqueleto;
 
-import BusinessLogic.Entities.EjercitoRuso.Hormiga;
 import BusinessLogic.Entities.EjercitoRuso.IhomigaExtremidad;
-import BusinessLogic.Entities.EjercitoRuso.Soldado;
+import BusinessLogic.Entities.EjercitoRuso.HormigaRusa;
 import BusinessLogic.Entities.InteligenciaArtificial.IABOT;
 
-public class ExoBot extends IABOT implements IhomigaExtremidad {
+public class AntBot extends IABOT implements IhomigaExtremidad {
     private FuentePoder ssEFuentePoder;
-
-    private Tenazas tenazas;
-    private SensoresOpticos sensor;
-    private Radio radio;
-    private Antenas antenas;
-    private Procesador procesador;
-    private Tronco tronco;
     private TurboReactor ssETurboReactor;
     private BrazoDerecho ssEBrazoDerecho;
     private BrazoIzquierdo ssEBrazoIzquierdo;
-   
-    public ExoBot(IABOT iaBot) {
+    private Pierna ssEPiernaDerecha;
+    private Pierna ssEPiernaIzquierda;
+
+    public AntBot(IABOT iaBot) {
         super(iaBot);
         // ssEFuentePoder = new FuentePoder();
-        tenazas = new Tenazas();
-        sensor = new SensoresOpticos();
-        radio = new Radio();    
-        antenas = new Antenas();
-        procesador = new Procesador();
-        tronco = new Tronco();
-
         ssETurboReactor = new TurboReactor();
         ssEBrazoDerecho = new BrazoDerecho();
-       
+        ssEPiernaDerecha = new Pierna();
+        ssEPiernaIzquierda = new Pierna();
 
-     
+        if (AntBot.circuitoAnillado)
+            ssEBrazoIzquierdo = new BrazoIzquierdo();
 
     }
 
-    public void unirseSoldado(Hormiga soldado) throws InterruptedException {
-        // if (ExoBot.brazoIzquierdo && ssEBrazoIzquierdo != null) {
+    public void unirseSoldado(HormigaRusa soldado) throws InterruptedException {
+        // if (ExoBot.circuitoAnillado && ssEBrazoIzquierdo != null) {
         //     ssEBrazoIzquierdo = new BrazoIzquierdo();
         //     System.out.print("Arma del brazo izquierdo: ");
         //     if (soldado.getssHabilidadBrazoIzquierdo())
@@ -59,6 +48,8 @@ public class ExoBot extends IABOT implements IhomigaExtremidad {
         //     System.out.println(ssEBrazoDerecho.ssArma.toString());
 
         // }
+
+
 
     }
 

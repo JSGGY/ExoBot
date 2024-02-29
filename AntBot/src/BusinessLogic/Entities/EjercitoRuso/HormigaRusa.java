@@ -3,30 +3,40 @@ package BusinessLogic.Entities.EjercitoRuso;
 import BusinessLogic.Entities.Exoesqueleto.FuentePoder;
 import BusinessLogic.Entities.Exoesqueleto.TurboReactor;
 
-public class Soldado extends Humano implements IhomigaExtremidad {
+public class HormigaRusa extends Hormiga implements IhomigaExtremidad {
+    private String clasificacion;
+    
     private Boolean ssHabilidadBrazoIzquierdo;
     private Boolean ssHabilidadBrazoDerecho;
-
-    public Soldado(String nombre) {
+    
+    public HormigaRusa(String nombre, String clasificacion) {
         super(nombre);
-
-        if (Soldado.radio)
-            setssHabilidadBrazoDerecho(getHabilidadRandom());
-
-        if (Soldado.circuitoAnillado)
-            setssHabilidadBrazoIzquierdo(getHabilidadRandom());
-
+        this.clasificacion = clasificacion;
+        if (HormigaRusa.radio)
+        setssHabilidadBrazoDerecho(getHabilidadRandom());
+        
+        if (HormigaRusa.circuitoAnillado)
+        setssHabilidadBrazoIzquierdo(getHabilidadRandom());
+        
     }
-
+    
     private boolean getHabilidadRandom() {
         int bias = 50;
         return (Math.random() * 100 < bias);
     }
-
+    
     public Boolean getssHabilidadBrazoIzquierdo() {
         return ssHabilidadBrazoIzquierdo;
     }
+    
+    public String getClasificacion() {
+        return clasificacion;
+    }
 
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+    
     public void setssHabilidadBrazoIzquierdo(Boolean ssHabilidadBrazoIzquierdo) {
         this.ssHabilidadBrazoIzquierdo = ssHabilidadBrazoIzquierdo;
     }
