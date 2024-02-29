@@ -75,7 +75,7 @@ public class UsuarioSistemaDAO extends SQLiteDataHelper implements IDAO<UsuarioS
     }
 
     @Override
-    public List<UsuarioSistemaDTO> readAll() throws Exception {
+    public ArrayList<UsuarioSistemaDTO> readAll() throws Exception {
         ArrayList<UsuarioSistemaDTO> list = new ArrayList<>();
         String query = "SELECT IdUsuarioSistema,IdHormigaTipo,Contraseña,Estado,FechaCrea,FechaModifica FROM UsuarioSistema WHERE Estado = 'A'";
         try {

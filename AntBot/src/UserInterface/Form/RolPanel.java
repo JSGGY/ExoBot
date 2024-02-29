@@ -68,7 +68,10 @@ public class RolPanel extends JPanel {
     private void setupActions() {
         btnSoldado.addActionListener(e -> SoldadoLoginPanel());
 
-        // btnReina.addActionListener(e -> LoginAdminPanel());
+        btnReina.addActionListener(e -> LogReinaPanel());
+        btnLarva.addActionListener(e -> LogLarvaPanel());
+        btnZangano.addActionListener(e -> LogZanganoPanel());
+        btnRastreadora.addActionListener(e -> LogRastreadorPanel());
         // btnZangano.addActionListener(e -> LoginRepartidorPanel());
         btnRegresar.addActionListener(e -> MainForm());
     }
@@ -81,41 +84,67 @@ public class RolPanel extends JPanel {
             repaint();
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al cargar PatPnlPersonaSexo",
+            JOptionPane.showMessageDialog(this, "Error al cargar MainForm",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    // private void LoginRepartidorPanel() {
-    // try {
-    // removeAll();
-    // add(new LoginRepartidorPanel());
-    // revalidate();
-    // repaint();
-    // } catch (Exception ex) {
-    // ex.printStackTrace();
-    // JOptionPane.showMessageDialog(this, "Error al cargar PatPnlPersonaSexo",
-    // "ERROR", JOptionPane.ERROR_MESSAGE);
-    // }
-    // }
+    private void LogRastreadorPanel() {
+        try {
+            removeAll();
+            add(new LogRastreadorPanel());
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar LogRastreadorPanel",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-    // private void LoginAdminPanel() {
-    // try {
-    // removeAll();
-    // add(new LoginAdminPanel());
-    // revalidate();
-    // repaint();
-    // } catch (Exception ex) {
-    // ex.printStackTrace();
-    // JOptionPane.showMessageDialog(this, "Error al cargar PatPnlPersonaSexo",
-    // "ERROR", JOptionPane.ERROR_MESSAGE);
-    // }
-    // }
+    private void LogZanganoPanel() {
+        try {
+            removeAll();
+            add(new LogZanganoPanel());
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar LogZanganoPanel",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void LogLarvaPanel() {
+        try {
+            removeAll();
+            add(new LogLarvaPanel());
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar LogLarvaPanel",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void LogReinaPanel() {
+        try {
+            removeAll();
+            add(new LogReinaPanel());
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar LogReinaPanel",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     private void SoldadoLoginPanel() {
         try {
             removeAll();
-            add(new SoldadoLoginPanel());
+            add(new LogSoldadoPanel());
             revalidate();
             repaint();
         } catch (Exception ex) {
@@ -127,7 +156,7 @@ public class RolPanel extends JPanel {
 
     private void loadImage() {
         ImageIcon imagenFondo = new ImageIcon(
-                "AntBot\\Resource\\FondoRolPaneles.png");
+                "Resource\\FondoRolPaneles.png");
         backgroundImage = imagenFondo.getImage();
     }
 
