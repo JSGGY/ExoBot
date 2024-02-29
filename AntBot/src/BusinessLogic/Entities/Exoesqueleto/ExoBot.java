@@ -6,27 +6,37 @@ import BusinessLogic.Entities.InteligenciaArtificial.IABOT;
 
 public class ExoBot extends IABOT implements IhomigaExtremidad {
     private FuentePoder ssEFuentePoder;
+
+    private Tenazas tenazas;
+    private SensoresOpticos sensor;
+    private Radio radio;
+    private Antenas antenas;
+    private Procesador procesador;
+    private Tronco tronco;
     private TurboReactor ssETurboReactor;
     private BrazoDerecho ssEBrazoDerecho;
     private BrazoIzquierdo ssEBrazoIzquierdo;
-    private Pierna ssEPiernaDerecha;
-    private Pierna ssEPiernaIzquierda;
-
+   
     public ExoBot(IABOT iaBot) {
         super(iaBot);
         // ssEFuentePoder = new FuentePoder();
+        tenazas = new Tenazas();
+        sensor = new SensoresOpticos();
+        radio = new Radio();    
+        antenas = new Antenas();
+        procesador = new Procesador();
+        tronco = new Tronco();
+
         ssETurboReactor = new TurboReactor();
         ssEBrazoDerecho = new BrazoDerecho();
-        ssEPiernaDerecha = new Pierna();
-        ssEPiernaIzquierda = new Pierna();
+       
 
-        if (ExoBot.circuitoAnillado)
-            ssEBrazoIzquierdo = new BrazoIzquierdo();
+     
 
     }
 
     public void unirseSoldado(Soldado soldado) throws InterruptedException {
-        if (ExoBot.circuitoAnillado && ssEBrazoIzquierdo != null) {
+        if (ExoBot.brazoIzquierdo && ssEBrazoIzquierdo != null) {
             ssEBrazoIzquierdo = new BrazoIzquierdo();
             System.out.print("Arma del brazo izquierdo: ");
             if (soldado.getssHabilidadBrazoIzquierdo())
