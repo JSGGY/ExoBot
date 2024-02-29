@@ -105,13 +105,13 @@ public class PnlHormigaIdioma extends JPanel {
     }
 
     private void setupActions() {
-        btnRegresar.addActionListener(e -> MainForm());
+        btnRegresar.addActionListener(e -> PnlSoldado());
     }
 
-    private void MainForm() {
+    private void PnlSoldado() {
         try {
             removeAll();
-            add(new MainForm());
+            add(new PnlSoldado());
             revalidate();
             repaint();
         } catch (Exception ex) {
