@@ -1,16 +1,20 @@
-package BusinessLogic.Entities.EjercitoRuso;
+package EjercitoRuso;
 
-import BusinessLogic.Entities.Exoesqueleto.ITecnicoIngles;
+import Exoesqueleto.ITecnicoIngles;
 
-public class ExpertoIngles extends Humano{
+public class ExpertoIngles {
+    private final String nombreExpertoIngles;
 
-    public ExpertoIngles(String nombre) {
-        super(nombre);
+    public ExpertoIngles() {
+        this.nombreExpertoIngles = "Arthur";
     }
 
-    public void ensenarIngles(ITecnicoIngles exobot){
-        //Para aprender el idioma técnico se requiere de expertos en inglés y español técnico que le transfieran léxico, gramática y fonética para entender a otros soldados
-        System.out.println("ensenarIngles");
+    public String getNombreExpertoIngles() {
+        return nombreExpertoIngles;
     }
-    
+
+    public void ensenarIngles(ITecnicoIngles iTecnicoIngles) {
+        System.out.println("Ensenando a la AntBot ingles" + " soy el maestro " + getNombreExpertoIngles());
+    }
+
 }

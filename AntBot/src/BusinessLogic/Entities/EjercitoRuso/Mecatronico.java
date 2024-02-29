@@ -1,19 +1,17 @@
-package BusinessLogic.Entities.EjercitoRuso;
+package EjercitoRuso;
 
-import BusinessLogic.Entities.IABot;
-import BusinessLogic.Entities.Exoesqueleto.Exobot;
+import Exoesqueleto.AntBot;
+import InteligenciaArtificial.IABOT;
 
-public class Mecatronico extends Humano{
+public class Mecatronico extends Hormiga {
 
     public Mecatronico(String nombre) {
         super(nombre);
     }
-    public void ensamblar(Soldado soldado, Exobot exobot, IABot iaBot){
-        System.out.println("testing: soldado.ensambla");
-        System.out.println(soldado.getHabilidaBrazoIzquierdo() );
-        System.out.println("testing: exobot.ensambla");
-        //exobot.unirseSoldado(soldado);
 
-
+    public void ensamblar(HormigaRusa hRusa, AntBot antBot, IABOT iaBot) throws InterruptedException {
+        System.out.println("Ensamblando AntBot, con sus potenciadores");
+        antBot.unirseHormigaRusa(hRusa);
     }
+
 }

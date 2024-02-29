@@ -1,5 +1,18 @@
-package BusinessLogic.Entities.Exoesqueleto;
+package Exoesqueleto;
 
 public class FuentePoder {
-    private int nivelEnergia;
+    public static int nivelDeEnergia;
+
+    public FuentePoder() {
+        nivelDeEnergia = 100;
+    }
+
+    public int getssNivelDeEnergia() {
+        return nivelDeEnergia;
+    }
+
+    public void setssNivelDeEnergia(int nivelEnergia) {
+        nivelDeEnergia = nivelEnergia;
+    }
+
 }
