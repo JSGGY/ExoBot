@@ -1,8 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "AntBot/lib/flatlaf-3.0.jar",
-        "AntBot/lib/flatlaf-intellij-themes-3.0.jar",
-        "AntBot/lib/sqlite-jdbc-3.40.0.0.jar"
-    ]
-}
