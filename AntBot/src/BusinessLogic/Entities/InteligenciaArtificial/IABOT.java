@@ -53,4 +53,15 @@ public class IABOT implements ITecnicoRuso, ITecnicoIngles {
         });
         System.out.println();
     }
+
+
+    @Override
+    public String traducirIngles(String texto) {
+       return texto;
+    }
+    @Override
+    public String traducirRuso(String texto) {
+       return texto;
+    }
+
 }
