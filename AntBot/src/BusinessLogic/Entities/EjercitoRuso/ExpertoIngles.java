@@ -14,7 +14,7 @@ public class ExpertoIngles {
     }
 
     public void ssEnsenarIngles(ITecnicoIngles iTecnicoIngles) {
-        System.out.println("Enseñando a la IABOT inglés" + " soy el maestro " + getSsNombreExpertoIngles());
+        System.out.println("Ensenando a la AntBot ingles" + " soy el maestro " + getSsNombreExpertoIngles());
     }
 
 }

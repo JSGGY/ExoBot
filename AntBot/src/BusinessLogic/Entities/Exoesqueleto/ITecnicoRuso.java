@@ -1,5 +1,5 @@
 package BusinessLogic.Entities.Exoesqueleto;
 
-public interface ITecnicoEspanol {
+public interface ITecnicoRuso {
 
 }

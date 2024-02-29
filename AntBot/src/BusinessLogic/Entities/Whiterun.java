@@ -1,7 +1,7 @@
 package BusinessLogic.Entities;
 import java.util.Scanner;
 
-import BusinessLogic.Entities.EjercitoRuso.ExpertoEspanol;
+import BusinessLogic.Entities.EjercitoRuso.ExpertoRuso;
 import BusinessLogic.Entities.EjercitoRuso.ExpertoIngles;
 import BusinessLogic.Entities.EjercitoRuso.Mecatronico;
 import BusinessLogic.Entities.EjercitoRuso.Soldado;
@@ -22,11 +22,11 @@ public class Whiterun {
         System.out.println("\u001B[38;5;208m" + "Creando la IA-BOT...");
         IABOT iaBot = IABOT.getssInstancia("IA-BOT");
         System.out.println("La IABOT aprenderá idiomas");
-        ExpertoEspanol oSSExpertoEspanol = new ExpertoEspanol();
+        ExpertoRuso oSSExpertoRuso = new ExpertoRuso();
         ExpertoIngles oSSExpertoIngles = new ExpertoIngles();
-        oSSExpertoEspanol.ssEnsenarEspanol(iaBot);
+        oSSExpertoRuso.ssEnsenarRuso(iaBot);
         oSSExpertoIngles.ssEnsenarIngles(iaBot);
-        iaBot.ssAprenderIdiomaEspanol();
+        iaBot.ssAprenderIdiomaRuso();
         iaBot.ssAprenderIdiomaIngles();
 
         iaBot.ssMostrarIdiomasAprendidos();

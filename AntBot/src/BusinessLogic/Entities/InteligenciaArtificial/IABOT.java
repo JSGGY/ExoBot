@@ -2,11 +2,11 @@ package BusinessLogic.Entities.InteligenciaArtificial;
 
 import java.util.Hashtable;
 
-import BusinessLogic.Entities.Exoesqueleto.ITecnicoEspanol;
+import BusinessLogic.Entities.Exoesqueleto.ITecnicoRuso;
 import BusinessLogic.Entities.Exoesqueleto.ITecnicoIngles;
 
 
-public class IABOT implements ITecnicoEspanol, ITecnicoIngles {
+public class IABOT implements ITecnicoRuso, ITecnicoIngles {
     // patron Singletoon
     private static String ssNombre;
     private static IABOT ssInstancia;
@@ -42,8 +42,8 @@ public class IABOT implements ITecnicoEspanol, ITecnicoIngles {
         ssListaAprendizajes.put(1, " Ingles");
     }
 
-    public void ssAprenderIdiomaEspanol() {
-        ssListaAprendizajes.put(2, " Espanol");
+    public void ssAprenderIdiomaRuso() {
+        ssListaAprendizajes.put(2, " Ruso");
     }
 
     public void ssMostrarIdiomasAprendidos() {
