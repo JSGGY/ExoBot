@@ -14,7 +14,7 @@ public class UsuarioSistemaBL {
    public UsuarioSistemaBL() {
    }
 
-   public List<UsuarioSistemaDTO> getAll() throws Exception {
+   public static ArrayList<UsuarioSistemaDTO> getAll() throws Exception {
       return htDAO.readAll();
    }
 

@@ -13,7 +13,6 @@ import java.util.List;
 import DataAccess.SQLiteDataHelper;
 import DataAccess.DTO.AntBotDTO;
 
-
 public class AntBotDAO extends SQLiteDataHelper implements IDAO<AntBotDTO> {
 
     @Override
@@ -31,7 +30,7 @@ public class AntBotDAO extends SQLiteDataHelper implements IDAO<AntBotDTO> {
     }
 
     @Override
-    public List<AntBotDTO> readAll() throws Exception {
+    public ArrayList<AntBotDTO> readAll() throws Exception {
         ArrayList<AntBotDTO> list = new ArrayList<>();
         String query = "SELECT IdAntBot,IdIABot,Nombre,Serie,Estado FROM AntBot WHERE Estado = 'A'";
         try {
@@ -40,32 +39,33 @@ public class AntBotDAO extends SQLiteDataHelper implements IDAO<AntBotDTO> {
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 AntBotDTO s = new AntBotDTO(rs.getInt(1),
-                                                      rs.getInt(2),
-                                                      rs.getString(2),
-                                                      rs.getString(3), 
-                                                      rs.getString(4));
+                        rs.getInt(2),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4));
                 list.add(s);
             }
         } catch (SQLException e) {
             throw e;
         }
-        return list;      
+        return list;
     }
 
     @Override
     public AntBotDTO readBy(Integer id) throws Exception {
         AntBotDTO oS = new AntBotDTO();
-        String query = "SELECT IdAntBot,IdIABot,Nombre,Serie,Estado FROM AntBot WHERE Estado = 'A'AND IdAntBot = "+ id.toString();
+        String query = "SELECT IdAntBot,IdIABot,Nombre,Serie,Estado FROM AntBot WHERE Estado = 'A'AND IdAntBot = "
+                + id.toString();
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 oS = new AntBotDTO(rs.getInt(1),
-                                        rs.getInt(2),
-                                        rs.getString(3),
-                                        rs.getString(4), 
-                                        rs.getString(5));
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
             }
         } catch (SQLException e) {
             throw e;
@@ -82,7 +82,7 @@ public class AntBotDAO extends SQLiteDataHelper implements IDAO<AntBotDTO> {
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, entity.getNombre());
-            stmt.setString(2,date.format(now).toString());
+            stmt.setString(2, date.format(now).toString());
             stmt.setInt(3, entity.getIdAntBot());
             stmt.executeUpdate();
             return true;
@@ -98,14 +98,12 @@ public class AntBotDAO extends SQLiteDataHelper implements IDAO<AntBotDTO> {
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, "X");
-            stmt.setInt(2,id);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             throw e;
-        } 
+        }
     }
-    
-    
-}
 
+}

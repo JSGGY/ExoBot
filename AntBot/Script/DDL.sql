@@ -36,7 +36,7 @@ CREATE TABLE HormigaTipo (
      IdHormigaTipo       INTEGER primary key autoincrement
     ,IdHormigaTipoPadre  INTEGER REFERENCES HormigaTipo(IdHormigaTipo)
     ,Nombre              TEXT NOT NULL UNIQUE
-    ,Estado         VARCHAR(1) NOT NULL DEFAULT('A')
+    ,Estado             VARCHAR(1) NOT NULL DEFAULT('A')
     ,FechaCrea           datetime default current_timestamp
 );
 
@@ -48,28 +48,7 @@ CREATE TABLE Hormiga (
     ,Estado         VARCHAR(1) NOT NULL DEFAULT('A')
     ,FechaCrea      datetime default current_timestamp
 );
-CREATE TABLE PersonaTipo (
-     IdPersonaTipo  INTEGER primary key autoincrement
-    ,Nombre    TEXT NOT NULL UNIQUE
-    ,Estado         VARCHAR(1) NOT NULL DEFAULT('A')
-    ,FechaCrea      datetime default current_timestamp
-);
-CREATE TABLE Persona (
-     IdPersona      INTEGER primary key autoincrement
-    ,IdPersonaTipo  INTEGER NOT NULL REFERENCES PersonaTipo(IdPersonaTipo)
-    ,Cedula         TEXT NOT NULL UNIQUE
-    ,Nombre         TEXT NOT NULL 
-    ,Estado         VARCHAR(1) NOT NULL DEFAULT('A')
-    ,FechaCrea      datetime default current_timestamp
-);
-CREATE TABLE Persona (
-     IdPersona      INTEGER primary key autoincrement
-    ,IdPersonaTipo  INTEGER NOT NULL REFERENCES PersonaTipo(IdPersonaTipo)
-    ,Cedula         TEXT NOT NULL UNIQUE
-    ,Nombre         TEXT NOT NULL 
-    ,Estado         VARCHAR(1) NOT NULL DEFAULT('A')
-    ,FechaCrea      datetime default current_timestamp
-);
+
 
 CREATE TABLE UsuarioSistema (
     IdUsuarioSistema        INTEGER primary key autoincrement
