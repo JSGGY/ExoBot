@@ -17,7 +17,7 @@ public class App {
     public static void iniciarSistema() {
         // SplashScreenForm.show();
         MainForm mainForm = new MainForm();
-        JFrame frame = new JFrame("LovingFans");
+        JFrame frame = new JFrame("AntBots");
         frame.add(mainForm);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -26,7 +26,7 @@ public class App {
         // la ruta
         // logo
         frame.setIconImage(icon.getImage());
-        frame.setSize(830, 750); // Por ejemplo, tamaño de 400x300 píxeles
+        frame.setSize(830, 750);
         frame.setVisible(true);
 
     }

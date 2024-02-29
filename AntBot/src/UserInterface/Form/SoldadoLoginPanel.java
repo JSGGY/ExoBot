@@ -16,6 +16,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import BusinessLogic.BL.HormigaBL;
+import BusinessLogic.BL.UsuarioSistemaBL;
+import DataAccess.DTO.UsuarioSistemaDTO;
 import UserInterface.CustomerControl.SebButton;
 import UserInterface.CustomerControl.SebLabel;
 
@@ -108,26 +110,23 @@ public class SoldadoLoginPanel extends JPanel {
     private boolean validarUsuario(String usuario, String clave) {
         try {
 
-            // if
-            // (HormigaBL.getHormigaRol(Integer.parseInt(usuario)).toStringIdHormigaRol().equals("4"))
-            // {
+            if (HormigaBL.getHormigaRol(Integer.parseInt(usuario)).toStringIdHormigaRol().equals("4")) {
 
-            // // Obtener la lista de usuarios de la base de datos
-            // ArrayList<UsuarioSistemaDTO> listaUsuarios = UsuarioSistemaBL.getUsuario();
+                // Obtener la lista de usuarios de la base de datos
+                ArrayList<UsuarioSistemaDTO> listaUsuarios = UsuarioSistemaBL.getUsuario();
 
-            // // Iterar sobre la lista de usuarios
-            // for (UsuarioSistemaDTO usuarioGuardado : listaUsuarios) {
-            // Integer idClaveBuscada =
-            // Integer.parseInt(usuarioGuardado.toStringIdPersona());
-            // // Obtener la contraseña almacenada para el usuario actual
-            // // Validar si el usuario ingresado coincide con algún usuario de la lista
-            // if (usuario.equals(usuarioGuardado.toStringIdPersona())
-            // && clave.equals(UsuarioSistemaBL.getClave(idClaveBuscada).toStringClave())) {
-            // // Si el usuario coincide y la contraseña es correcta, devolver true
-            // return true;
-            // }
-            // }
-            // }
+                // Iterar sobre la lista de usuarios
+                for (UsuarioSistemaDTO usuarioGuardado : listaUsuarios) {
+                    Integer idClaveBuscada = Integer.parseInt(usuarioGuardado.toStringIdPersona());
+                    // Obtener la contraseña almacenada para el usuario actual
+                    // Validar si el usuario ingresado coincide con algún usuario de la lista
+                    if (usuario.equals(usuarioGuardado.toStringIdPersona())
+                            && clave.equals(UsuarioSistemaBL.getClave(idClaveBuscada).toStringClave())) {
+                        // Si el usuario coincide y la contraseña es correcta, devolver true
+                        return true;
+                    }
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
