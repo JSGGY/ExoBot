@@ -21,7 +21,7 @@ import DataAccess.DTO.UsuarioSistemaDTO;
 import UserInterface.CustomerControl.SebButton;
 import UserInterface.CustomerControl.SebLabel;
 
-public class SoldadoLoginPanel extends JPanel {
+public class LogLarvaPanel extends JPanel {
 
     private JTextField usuarioField;
     private JPasswordField passwordField;
@@ -29,7 +29,7 @@ public class SoldadoLoginPanel extends JPanel {
     private Image backgroundImage;
     private SebButton btnRegresar;
 
-    public SoldadoLoginPanel() {
+    public LogLarvaPanel() {
         initializeComponents();
         setupLayout();
         setupActions();
@@ -48,8 +48,8 @@ public class SoldadoLoginPanel extends JPanel {
     private void setupLayout() {
         setLayout(new BorderLayout());
 
-        JPanel panerIncicioSesion = new JPanel(new FlowLayout(FlowLayout.CENTER, 100,
-                100));
+        JPanel panerIncicioSesion = new JPanel(new FlowLayout(FlowLayout.CENTER, 10,
+                200));
         panerIncicioSesion.setOpaque(false);
         panerIncicioSesion.add(new SebLabel("Usuario:"));
         panerIncicioSesion.add(usuarioField);
@@ -75,13 +75,13 @@ public class SoldadoLoginPanel extends JPanel {
 
                 // Aquí debes incluir la lógica para verificar el usuario y la contraseña
                 if (validarUsuario(usuario, contrasena)) {
-                    JOptionPane.showMessageDialog(SoldadoLoginPanel.this, "Login Exitoso",
+                    JOptionPane.showMessageDialog(LogLarvaPanel.this, "Login Exitoso",
                             "Bienvenido",
                             JOptionPane.INFORMATION_MESSAGE);
                     // Si la validación es exitosa, pasas al siguiente panel
-                    // UserPanel();-------------------------------------------------------------
+                    ReinaPanel();
                 } else {
-                    JOptionPane.showMessageDialog(SoldadoLoginPanel.this, "Usuario o Contraseña incorrectos", "Error",
+                    JOptionPane.showMessageDialog(LogLarvaPanel.this, "Usuario o Contraseña incorrectos", "Error",
                             JOptionPane.ERROR_MESSAGE);
                 }
 
@@ -93,25 +93,24 @@ public class SoldadoLoginPanel extends JPanel {
         btnRegresar.addActionListener(e -> RolPanel());
     }
 
-    // private void UserPanel() {---------------------------------------------
-    // try {
-    // removeAll();
-    // add(new UserPanel());
-    // revalidate();
-    // repaint();
-    // } catch (Exception ex) {
-    // ex.printStackTrace();
-    // JOptionPane.showMessageDialog(this, "Error al cargar PatPnlPersonaSexo",
-    // "ERROR", JOptionPane.ERROR_MESSAGE);
-    // }
-    // }
+    private void ReinaPanel() {
+        try {
+            removeAll();
+            add(new PnlReina());
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar PatPnlPersonaSexo",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Método para verificar el usuario y contraseña en la base de datos
     private boolean validarUsuario(String usuario, String clave) {
         try {
 
-            if (HormigaBL.getHormigaRol(Integer.parseInt(usuario)).toStringIdHormigaRol().equals("4")) {
-
+            if (usuario.equals("3")) {
                 // Obtener la lista de usuarios de la base de datos
                 ArrayList<UsuarioSistemaDTO> listaUsuarios = UsuarioSistemaBL.getUsuario();
 
@@ -126,6 +125,8 @@ public class SoldadoLoginPanel extends JPanel {
                         return true;
                     }
                 }
+            } else {
+                System.out.println("algo salio mal ");
             }
         } catch (Exception e) {
             e.printStackTrace();

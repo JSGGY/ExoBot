@@ -88,4 +88,9 @@ public class HormigaDTO {
     public String toStringIdHormigaRol() {
         return "" + idHormigaTipo;
     }
+
+    public String toStringCodigo() {
+
+        return getCodigo();
+    }
 }

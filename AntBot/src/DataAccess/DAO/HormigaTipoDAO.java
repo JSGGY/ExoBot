@@ -13,7 +13,6 @@ import java.util.List;
 import DataAccess.SQLiteDataHelper;
 import DataAccess.DTO.HormigaTipoDTO;
 
-
 public class HormigaTipoDAO extends SQLiteDataHelper implements IDAO<HormigaTipoDTO> {
 
     @Override
@@ -31,7 +30,7 @@ public class HormigaTipoDAO extends SQLiteDataHelper implements IDAO<HormigaTipo
     }
 
     @Override
-    public List<HormigaTipoDTO> readAll() throws Exception {
+    public ArrayList<HormigaTipoDTO> readAll() throws Exception {
         ArrayList<HormigaTipoDTO> list = new ArrayList<>();
         String query = "SELECT IdHormigaTipo,IdHormigaTipoPadre, Nombre,Estado,FechaCrea FROM HormigaTipo WHERE Estado = 'A'";
         try {
@@ -40,32 +39,33 @@ public class HormigaTipoDAO extends SQLiteDataHelper implements IDAO<HormigaTipo
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 HormigaTipoDTO s = new HormigaTipoDTO(rs.getInt(1),
-                                                      rs.getInt(2),
-                                                      rs.getString(2),
-                                                      rs.getString(3), 
-                                                      rs.getString(4));
+                        rs.getInt(2),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4));
                 list.add(s);
             }
         } catch (SQLException e) {
             throw e;
         }
-        return list;      
+        return list;
     }
 
     @Override
     public HormigaTipoDTO readBy(Integer id) throws Exception {
         HormigaTipoDTO oS = new HormigaTipoDTO();
-        String query = "SELECT IdHormigaTipo,IdHormigaTipoPadre,Nombre,Estado,FechaCrea FROM HormigaTipo WHERE Estado = 'A'AND IdHormigaTipo = "+ id.toString();
+        String query = "SELECT IdHormigaTipo,IdHormigaTipoPadre,Nombre,Estado,FechaCrea FROM HormigaTipo WHERE Estado = 'A'AND IdHormigaTipo = "
+                + id.toString();
         try {
             Connection conn = openConnection();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
                 oS = new HormigaTipoDTO(rs.getInt(1),
-                                        rs.getInt(2),
-                                        rs.getString(3),
-                                        rs.getString(4), 
-                                        rs.getString(5));
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5));
             }
         } catch (SQLException e) {
             throw e;
@@ -82,7 +82,7 @@ public class HormigaTipoDAO extends SQLiteDataHelper implements IDAO<HormigaTipo
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, entity.getNombre());
-            stmt.setString(2,date.format(now).toString());
+            stmt.setString(2, date.format(now).toString());
             stmt.setInt(3, entity.getIdHormigaTipo());
             stmt.executeUpdate();
             return true;
@@ -98,14 +98,12 @@ public class HormigaTipoDAO extends SQLiteDataHelper implements IDAO<HormigaTipo
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, "X");
-            stmt.setInt(2,id);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
             throw e;
-        } 
+        }
     }
-    
-    
-}
 
+}
