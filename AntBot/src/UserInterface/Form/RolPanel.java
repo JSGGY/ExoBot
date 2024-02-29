@@ -19,7 +19,6 @@ public class RolPanel extends JPanel {
     private SebButton btnZangano;
     private SebButton btnRastreadora;
     private SebButton btnLarva;
-    private SebButton btnHormigaIdioma;
     private Image backgroundImage;
     private SebButton btnRegresar;
 
@@ -36,7 +35,6 @@ public class RolPanel extends JPanel {
         btnZangano = new SebButton("Zángano");
         btnRastreadora = new SebButton("Rastreadora");
         btnLarva = new SebButton("Larva");
-        btnHormigaIdioma = new SebButton("Hormigas e idiomas");
         btnSoldado.setPreferredSize(new Dimension(150, 50));
         btnReina.setPreferredSize(new Dimension(150, 50));
         btnZangano.setPreferredSize(new Dimension(150, 50));
@@ -63,7 +61,6 @@ public class RolPanel extends JPanel {
         panelSouth.setOpaque(false); // Hacer transparente el panel
 
         panelSouth.add(btnRegresar); // Agregar el botón "Regresar" al panel
-        panelSouth.add(btnHormigaIdioma);
 
         add(panelSouth, BorderLayout.SOUTH); // Agregar el panel de "Regresar" en la parte inferior
     }
@@ -75,7 +72,6 @@ public class RolPanel extends JPanel {
         btnLarva.addActionListener(e -> LogLarvaPanel());
         btnZangano.addActionListener(e -> LogZanganoPanel());
         btnRastreadora.addActionListener(e -> LogRastreadorPanel());
-        btnHormigaIdioma.addActionListener(e -> PnlHormigaIdioma());
         // btnZangano.addActionListener(e -> LoginRepartidorPanel());
         btnRegresar.addActionListener(e -> MainForm());
     }
@@ -158,18 +154,6 @@ public class RolPanel extends JPanel {
         }
     }
 
-    private void PnlHormigaIdioma() {
-        try {
-            removeAll();
-            add(new PnlHormigaIdioma());
-            revalidate();
-            repaint();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al cargar PnlHormigaIidoma",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-    }
 
     private void loadImage() {
         ImageIcon imagenFondo = new ImageIcon(

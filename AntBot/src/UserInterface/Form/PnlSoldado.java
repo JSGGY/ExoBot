@@ -24,6 +24,8 @@ public class PnlSoldado extends JPanel {
 
     private Image backgroundImage;
     private SebButton btnRegresar;
+    private SebButton btnHormigaIdioma;
+    
     private JPanel pnlTabla = new JPanel();
 
     public PnlSoldado() {
@@ -36,6 +38,8 @@ public class PnlSoldado extends JPanel {
 
     private void initializeComponents() {
         btnRegresar = new SebButton("Regresar");
+        btnHormigaIdioma = new SebButton("Hormigas e idiomas");
+
     }
 
     private void showHormigasTabla() {
@@ -93,15 +97,19 @@ public class PnlSoldado extends JPanel {
         add(panelTablaCentral, BorderLayout.CENTER);
 
         // Panel para el botón "Regresar"
-        JPanel panelRegresar = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        panelRegresar.setOpaque(false);
-        panelRegresar.add(btnRegresar);
+        JPanel panelSouth = new JPanel(new FlowLayout(FlowLayout.LEFT)); // Nuevo panel para el botón "Regresar"
 
-        add(panelRegresar, BorderLayout.SOUTH);
+        panelSouth.setOpaque(false);
+        panelSouth.add(btnRegresar);
+        panelSouth.add(btnHormigaIdioma);
+        add(panelSouth, BorderLayout.SOUTH); // Agregar el panel de "Regresar" en la parte inferior
+
     }
 
     private void setupActions() {
         btnRegresar.addActionListener(e -> MainForm());
+        btnHormigaIdioma.addActionListener(e -> PnlHormigaIdioma());
+
     }
 
     private void MainForm() {
@@ -113,6 +121,19 @@ public class PnlSoldado extends JPanel {
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error al cargar PatPnlHormigaSexo",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void PnlHormigaIdioma() {
+        try {
+            removeAll();
+            add(new PnlHormigaIdioma());
+            revalidate();
+            repaint();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar PnlHormigaIidoma",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
