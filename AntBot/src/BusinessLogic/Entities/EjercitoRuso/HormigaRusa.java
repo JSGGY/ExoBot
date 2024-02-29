@@ -20,7 +20,7 @@ public class HormigaRusa extends Hormiga implements IhomigaExtremidad {
         }
 
 
-    public void ssReemplazarBateriaFuente(FuentePoder fuentePoder) {
+    public void reemplazarBateriaFuente(FuentePoder fuentePoder) {
         System.out.println("Recargando/ reemplazando batería");
         FuentePoder.nivelDeEnergia = 100;
 
