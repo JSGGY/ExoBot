@@ -3,17 +3,17 @@ package BusinessLogic.Entities.EjercitoRuso;
 import BusinessLogic.Entities.Exoesqueleto.FuentePoder;
 import BusinessLogic.Entities.Exoesqueleto.TurboReactor;
 
-public class Soldado extends Humano implements HumanoExtremidad {
+public class Soldado extends Humano implements IhomigaExtremidad {
     private Boolean ssHabilidadBrazoIzquierdo;
     private Boolean ssHabilidadBrazoDerecho;
 
     public Soldado(String nombre) {
         super(nombre);
 
-        if (Soldado.brazoDerecho)
+        if (Soldado.radio)
             setssHabilidadBrazoDerecho(getHabilidadRandom());
 
-        if (Soldado.brazoIzquierdo)
+        if (Soldado.circuitoAnillado)
             setssHabilidadBrazoIzquierdo(getHabilidadRandom());
 
     }

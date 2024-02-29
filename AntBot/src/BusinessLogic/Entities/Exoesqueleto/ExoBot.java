@@ -1,10 +1,10 @@
 package BusinessLogic.Entities.Exoesqueleto;
 
-import BusinessLogic.Entities.EjercitoRuso.HumanoExtremidad;
+import BusinessLogic.Entities.EjercitoRuso.IhomigaExtremidad;
 import BusinessLogic.Entities.EjercitoRuso.Soldado;
 import BusinessLogic.Entities.InteligenciaArtificial.IABOT;
 
-public class ExoBot extends IABOT implements HumanoExtremidad {
+public class ExoBot extends IABOT implements IhomigaExtremidad {
     private FuentePoder ssEFuentePoder;
     private TurboReactor ssETurboReactor;
     private BrazoDerecho ssEBrazoDerecho;
@@ -20,13 +20,13 @@ public class ExoBot extends IABOT implements HumanoExtremidad {
         ssEPiernaDerecha = new Pierna();
         ssEPiernaIzquierda = new Pierna();
 
-        if (ExoBot.brazoIzquierdo)
+        if (ExoBot.circuitoAnillado)
             ssEBrazoIzquierdo = new BrazoIzquierdo();
 
     }
 
     public void unirseSoldado(Soldado soldado) throws InterruptedException {
-        if (ExoBot.brazoIzquierdo && ssEBrazoIzquierdo != null) {
+        if (ExoBot.circuitoAnillado && ssEBrazoIzquierdo != null) {
             ssEBrazoIzquierdo = new BrazoIzquierdo();
             System.out.print("Arma del brazo izquierdo: ");
             if (soldado.getssHabilidadBrazoIzquierdo())
