@@ -1,4 +1,4 @@
-package BusinessLogic.Entities.EjercitoRuso;
+package EjercitoRuso;
 
 public abstract class Hormiga {
     private String ssNombre;

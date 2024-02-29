@@ -1,7 +1,7 @@
-package BusinessLogic.Entities.EjercitoRuso;
+package EjercitoRuso;
 
-import BusinessLogic.Entities.Exoesqueleto.AntBot;
-import BusinessLogic.Entities.InteligenciaArtificial.IABOT;
+import Exoesqueleto.AntBot;
+import InteligenciaArtificial.IABOT;
 
 public class Mecatronico extends Hormiga {
 
@@ -9,12 +9,9 @@ public class Mecatronico extends Hormiga {
         super(nombre);
     }
 
-    public void ensamblar(HormigaRusa ssSoldado, AntBot ssExobot, IABOT ssIaBot) throws InterruptedException {
-        System.out.println("El soldado consta de las siguientes habilidades: ");
-        System.out.println("Brazo Derecho, habilidad: " + ssSoldado.getssHabilidadBrazoDerecho());
-        System.out.println("Brazo Izquierdo, habilidad: " + ssSoldado.getssHabilidadBrazoIzquierdo());
-        System.out.println("Ensamblando exobot, con las siguientes armas");
-        ssExobot.unirseSoldado(ssSoldado);
+    public void ensamblar(HormigaRusa hRusa, AntBot antBot, IABOT iaBot) throws InterruptedException {
+        System.out.println("Ensamblando AntBot, con sus potenciadores");
+        antBot.unirseHormigaRusa(hRusa);
     }
 
 }

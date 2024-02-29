@@ -1,4 +1,4 @@
-package BusinessLogic.Entities.Exoesqueleto;
+package Exoesqueleto;
 
 public interface ITecnicoIngles {
 }

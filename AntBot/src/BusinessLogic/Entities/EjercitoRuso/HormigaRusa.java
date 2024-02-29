@@ -1,7 +1,7 @@
-package BusinessLogic.Entities.EjercitoRuso;
+package EjercitoRuso;
 
-import BusinessLogic.Entities.Exoesqueleto.FuentePoder;
-import BusinessLogic.Entities.Exoesqueleto.TurboReactor;
+import Exoesqueleto.FuentePoder;
+import Exoesqueleto.Alas;
 
 public class HormigaRusa extends Hormiga implements IhomigaExtremidad {
     private String clasificacion;
@@ -18,17 +18,11 @@ public class HormigaRusa extends Hormiga implements IhomigaExtremidad {
     public void setClasificacion(String clasificacion) {            
             this.clasificacion = clasificacion;
         }
-    
 
-    public void ssReemplazarBateriaTurboReactor(TurboReactor oSSTurboReactor) {
+
+    public void ssReemplazarBateriaFuente(FuentePoder fuentePoder) {
         System.out.println("Recargando/ reemplazando batería");
-        TurboReactor.ssNivelDeEnergia = 100;
-
-    }
-
-    public void ssReemplazarBateriaFuente(FuentePoder ossFuentePoder) {
-        System.out.println("Recargando/ reemplazando batería");
-        FuentePoder.ssNivelDeEnergia = 100;
+        FuentePoder.nivelDeEnergia = 100;
 
     }
 }

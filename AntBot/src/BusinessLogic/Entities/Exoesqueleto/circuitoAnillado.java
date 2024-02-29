@@ -1,5 +1,5 @@
-package BusinessLogic.Entities.Exoesqueleto;
+package Exoesqueleto;
 
 public class circuitoAnillado {
-    
+    private int salidaVoltaje = 300;
 }

@@ -1,20 +1,20 @@
-package BusinessLogic.Entities.EjercitoRuso;
+package EjercitoRuso;
 
-import BusinessLogic.Entities.Exoesqueleto.ITecnicoIngles;
+import Exoesqueleto.ITecnicoIngles;
 
 public class ExpertoIngles {
-    private final String ssNombreExpertoIngles;
+    private final String nombreExpertoIngles;
 
     public ExpertoIngles() {
-        this.ssNombreExpertoIngles = "Arthur";
+        this.nombreExpertoIngles = "Arthur";
     }
 
-    public String getSsNombreExpertoIngles() {
-        return ssNombreExpertoIngles;
+    public String getNombreExpertoIngles() {
+        return nombreExpertoIngles;
     }
 
-    public void ssEnsenarIngles(ITecnicoIngles iTecnicoIngles) {
-        System.out.println("Ensenando a la AntBot ingles" + " soy el maestro " + getSsNombreExpertoIngles());
+    public void ensenarIngles(ITecnicoIngles iTecnicoIngles) {
+        System.out.println("Ensenando a la AntBot ingles" + " soy el maestro " + getNombreExpertoIngles());
     }
 
 }

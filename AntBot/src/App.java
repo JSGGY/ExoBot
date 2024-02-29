@@ -7,18 +7,21 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import BusinessLogic.BL.HormigaBL;
+import InteligenciaArtificial.Rusia;
 import DataAccess.DTO.HormigaDTO;
 import UserInterface.Form.MainForm;
 import UserInterface.Form.SplashScreenForm;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         iniciarSistema();
     }
 
-    public static void iniciarSistema() {
+    public static void iniciarSistema() throws InterruptedException {
         // SplashScreenForm.show();
+        Rusia oRusia = new Rusia();
+        oRusia.iniciar();
         MainForm mainForm = new MainForm();
         JFrame frame = new JFrame("AntBots");
         frame.add(mainForm);

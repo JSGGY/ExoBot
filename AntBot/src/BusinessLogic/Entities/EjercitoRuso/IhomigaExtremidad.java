@@ -1,4 +1,4 @@
-package BusinessLogic.Entities.EjercitoRuso;
+package EjercitoRuso;
 
 public interface IhomigaExtremidad {
     public Boolean circuitoAnillado = true;
@@ -10,4 +10,5 @@ public interface IhomigaExtremidad {
     public Boolean sensoresOpticos = true;
     public Boolean antenas = true;
     public Boolean tronco = true;
+    public Boolean patas = true;
 }
