@@ -44,6 +44,8 @@ INSERT INTO Hormiga
 SELECT * FROM Persona;
 
 INSERT INTO UsuarioSistema(IdHormigaTipo,Contraseña,FechaModifica)VALUES
-(1,'contrasena',CURRENT_TIMESTAMP),
-(2,'ingles',CURRENT_TIMESTAMP),
-(4,'espanol',CURRENT_TIMESTAMP);
+(1,'contrasena1',CURRENT_TIMESTAMP),
+(2,'contrasena2',CURRENT_TIMESTAMP),
+(3,'contrasena3',CURRENT_TIMESTAMP),
+(4,'contrasena4',CURRENT_TIMESTAMP),
+(5,'contrasena5',CURRENT_TIMESTAMP);
