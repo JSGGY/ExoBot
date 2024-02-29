@@ -13,16 +13,19 @@ import java.util.List;
 import DataAccess.SQLiteDataHelper;
 import DataAccess.DTO.HormigaDTO;
 import DataAccess.DTO.HormigaDTO;
+import DataAccess.DTO.HormigaDTO;
 
 public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
 
     @Override
     public boolean create(HormigaDTO entity) throws Exception {
-        String query = "INSERT INTO Hormiga (Nombre) VALUES (?)";
+        String query = "INSERT INTO Hormiga (Nombre, IdHormigaTipo, Codigo) VALUES (?, ?, ?)";
         try {
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, entity.getNombre());
+            stmt.setInt(2, entity.getIdHormigaTipo());
+            stmt.setString(3, entity.getCodigo());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -31,7 +34,7 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
     }
 
     @Override
-    public List<HormigaDTO> readAll() throws Exception {
+    public ArrayList<HormigaDTO> readAll() throws Exception {
         ArrayList<HormigaDTO> list = new ArrayList<>();
         String query = "SELECT IdHormiga,IdHormigaTipo,Codigo,Nombre,Estado,FechaCrea FROM Hormiga WHERE Estado = 'A'";
         try {
@@ -56,7 +59,7 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
     @Override
     public HormigaDTO readBy(Integer id) throws Exception {
         HormigaDTO oS = new HormigaDTO();
-        String query = "SELECT IdHormiga,IdHormigaTipo,Codigo,Nombre,Estado,FechaCrea FROM Hormiga WHERE Estado = 'A'AND IdSector = "
+        String query = "SELECT IdHormiga,IdHormigaTipo,Codigo,Nombre,Estado,FechaCrea FROM Hormiga WHERE Estado = 'A'AND IdHormiga = "
                 + id.toString();
         try {
             Connection conn = openConnection();
@@ -76,11 +79,11 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
         return oS;
     }
 
-    public HormigaDTO obtenerHormigaRol(Integer idPersona) throws Exception {
+    public HormigaDTO obtenerHormigaRol(Integer idHormiga) throws Exception {
         HormigaDTO hormigaDTO = new HormigaDTO();
 
         String query = " SELECT IdHormigaTipo FROM Hormiga WHERE Estado = 'A' AND IdHormiga =   "
-                + idPersona.toString();
+                + idHormiga.toString();
 
         try {
             Connection conn = openConnection(); // Conectar a la base de datos
@@ -102,16 +105,19 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
 
     @Override
     public boolean update(HormigaDTO entity) throws Exception {
-        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        String query = "UPDATE Hormiga SET Nombre = ?,FechaModifica = ?,WHERE IdHormiga = ?";
+
+        String query = "UPDATE Hormiga SET Nombre = ?, IdHormigaTipo = ?, Codigo = ? WHERE IdHormiga = ?";
         try {
             Connection conn = openConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
+
             stmt.setString(1, entity.getNombre());
-            stmt.setString(2, date.format(now).toString());
-            stmt.setInt(3, entity.getIdHormiga());
+            stmt.setInt(2, entity.getIdHormigaTipo());
+            stmt.setString(3, entity.getCodigo());
+            stmt.setInt(4, entity.getIdHormiga());
+
             stmt.executeUpdate();
+
             return true;
         } catch (SQLException e) {
             throw e;
@@ -131,6 +137,44 @@ public class HormigaDAO extends SQLiteDataHelper implements IDAO<HormigaDTO> {
         } catch (SQLException e) {
             throw e;
         }
+    }
+
+    public ArrayList<String> obtenerCodigo() throws Exception {
+        ArrayList<String> codigos = new ArrayList<>();
+        String query = "SELECT Codigo FROM Hormiga WHERE Estado = 'A'";
+        try {
+            Connection conn = openConnection(); // Conectar a la base de datos
+            Statement stmt = conn.createStatement(); // Crear una declaración SQL
+            ResultSet rs = stmt.executeQuery(query); // Ejecutar la consulta SQL
+            while (rs.next()) {
+                // Obtener el código de la fila actual
+                String codigo = rs.getString("Codigo");
+                // Agregar el código a la lista
+                codigos.add(codigo);
+            }
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        }
+        return codigos;
+    }
+
+    public ArrayList<String> obtenerIdHormiga() throws Exception {
+        ArrayList<String> codigos = new ArrayList<>();
+        String query = "SELECT IdHormiga FROM Hormiga WHERE Estado = 'A'";
+        try {
+            Connection conn = openConnection(); // Conectar a la base de datos
+            Statement stmt = conn.createStatement(); // Crear una declaración SQL
+            ResultSet rs = stmt.executeQuery(query); // Ejecutar la consulta SQL
+            while (rs.next()) {
+                // Obtener el código de la fila actual
+                String codigo = rs.getInt(1) + "";
+                // Agregar el código a la lista
+                codigos.add(codigo);
+            }
+        } catch (SQLException e) {
+            throw new Exception(e.getMessage());
+        }
+        return codigos;
     }
 
 }

@@ -15,7 +15,7 @@ public abstract class SplashScreenForm {
     private static JLabel lblSplash;
 
     public static void show() {
-        icoImagen = new ImageIcon("AntBot\\Resource\\FondoSpash.png");
+        icoImagen = new ImageIcon("Resource\\FondoSpash.png");
         lblSplash = new JLabel(icoImagen);
         prbLoaging = new JProgressBar(0, 100);
 

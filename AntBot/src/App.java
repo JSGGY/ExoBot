@@ -6,11 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+import BusinessLogic.BL.HormigaBL;
+import DataAccess.DTO.HormigaDTO;
 import UserInterface.Form.MainForm;
 import UserInterface.Form.SplashScreenForm;
 
 public class App {
     public static void main(String[] args) {
+
         iniciarSistema();
     }
 

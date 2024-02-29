@@ -1,4 +1,4 @@
--- database: ../database/EXOBOT.sqlite
+-- database: ../Data/EXOBOT.sqlite
 
 insert INTO IABot ( Nombre,Observacion ) VALUES("IA-RUSO" ,"" );
 
