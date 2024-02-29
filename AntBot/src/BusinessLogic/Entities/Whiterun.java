@@ -4,8 +4,8 @@ import java.util.Scanner;
 import BusinessLogic.Entities.EjercitoRuso.ExpertoRuso;
 import BusinessLogic.Entities.EjercitoRuso.ExpertoIngles;
 import BusinessLogic.Entities.EjercitoRuso.Mecatronico;
-import BusinessLogic.Entities.EjercitoRuso.Soldado;
-import BusinessLogic.Entities.Exoesqueleto.ExoBot;
+import BusinessLogic.Entities.EjercitoRuso.HormigaRusa;
+import BusinessLogic.Entities.Exoesqueleto.AntBot;
 import BusinessLogic.Entities.Exoesqueleto.FuentePoder;
 import BusinessLogic.Entities.Exoesqueleto.TurboReactor;
 import BusinessLogic.Entities.InteligenciaArtificial.IABOT;
@@ -51,11 +51,11 @@ public class Whiterun {
                 System.out.println("\033[32m" + "Peloton " + (contadorPelotones + 1) + " :" + "\u001B[0m");
                 String identificadorSoldado = "Soldado" + (contadorSoldadosTotales);
                 contadorSoldadosTotales++;
-                Soldado soldado = new Soldado(identificadorSoldado);
-                ExoBot exobot = new ExoBot(iaBot);
+                HormigaRusa hormigaRusa = new HormigaRusa(identificadorSoldado);
+                AntBot exobot = new AntBot(iaBot);
                 System.out.println("\033[35m" + identificadorSoldado + " :" + "\033[36m");
 
-                mecatronico.ensamblar(soldado, exobot, iaBot);
+                mecatronico.ensamblar(hormigaRusa, exobot, iaBot);
                 System.out.println("\033[31m" + "Presione enter para disparar" + "\u001B[0m");
                 sc.nextLine();
                 limpiarConsola();
@@ -63,15 +63,17 @@ public class Whiterun {
                 System.out.println("Presione enter para continuar");
                 sc.nextLine();
                 limpiarConsola();
-                System.out.println("Desea volar?");
-                String ssdecisionVolar = sc.nextLine();
-                if (ssdecisionVolar.toLowerCase().equals("si")) {
-
-                    oSSTurboReactor.ssVolar();
-                    System.out.println("Reemplazando batería del turbo reactor y de la fuente de poder ");
-                    soldado.ssReemplazarBateriaTurboReactor(oSSTurboReactor);
-                    soldado.ssReemplazarBateriaFuente(ossFuentePoder);
-                    System.out.println("Baterias al 100");
+                if (hormigaRusa.getClasificacion().equalsIgnoreCase("zangano")) {         
+                    System.out.println("Desea volar?");
+                    String ssdecisionVolar = sc.nextLine();
+                    if (ssdecisionVolar.toLowerCase().equals("si")) {
+    
+                        oSSTurboReactor.ssVolar();
+                        System.out.println("Reemplazando batería del turbo reactor y de la fuente de poder ");
+                        hormigaRusa.ssReemplazarBateriaTurboReactor(oSSTurboReactor);
+                        hormigaRusa.ssReemplazarBateriaFuente(ossFuentePoder);
+                        System.out.println("Baterias al 100");
+                    }
                 }
 
             }

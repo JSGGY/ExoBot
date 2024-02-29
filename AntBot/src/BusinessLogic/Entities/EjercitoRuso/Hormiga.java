@@ -1,9 +1,9 @@
 package BusinessLogic.Entities.EjercitoRuso;
 
-public abstract class Humano {
+public abstract class Hormiga {
     private String ssNombre;
 
-    public Humano(String ssNombre) {
+    public Hormiga(String ssNombre) {
         this.ssNombre = ssNombre;
     }
 
